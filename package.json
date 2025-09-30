@@ -1,0 +1,25 @@
+{
+  "name": "node_crud",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000C\u0000R\u0000U\u0000D\u0000_\u0000A\u0000p\u0000p\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushin-gh/CRUD_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushin-gh/CRUD_App/issues"
+  },
+  "homepage": "https://github.com/rushin-gh/CRUD_App#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongodb": "^6.20.0"
+  }
+}
