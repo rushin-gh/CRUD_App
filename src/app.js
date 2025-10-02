@@ -14,11 +14,17 @@ app.get("/ping", (request, response) => {
 });
 
 app.post("/CreateUser", (request, response) => {
-  response.send(request.body);
+  try {
+    AddUser(request.body);
+    response.status(201).send("User created");
+  } catch (ex) {
+    response.status(500).send("Internal server error");
+  }
 });
 
 app.use("/", (request, response) => {
-  response.status(400).send();
+  console.log("All good -> " + request.originalUrl);
+  response.status(200).send();
 });
 
 app.listen(port, (err) => {
@@ -28,3 +34,18 @@ app.listen(port, (err) => {
     console.log("Server is listening on " + port);
   }
 });
+
+async function AddUser(user) {
+  try {
+    client.connect();
+    const db = client.db("nodecrud");
+    const users = db.collection("users");
+    await users.insertOne(user);
+    console.log("User inserted!");
+  } catch (ex) {
+    console.log(ex);
+    throw ex;
+  } finally {
+    await client.close();
+  }
+}
